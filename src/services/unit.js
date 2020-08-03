@@ -1,18 +1,19 @@
 function toCelsius (Kelvin) {
     let Celsius = Kelvin - 273.15;
-    Celsius = twoDigits(Celsius);
+    Celsius = xDigits(Celsius);
     return Celsius;
 }
 
 function toFahrenheit (Kelvin) {
     let Fahrenheit = 9 * (Kelvin - 273.15) / 5 + 32;
-    Fahrenheit = twoDigits(Fahrenheit);
+    Fahrenheit = xDigits(Fahrenheit);
     return Fahrenheit;
 }
 
-function twoDigits (number) {
-    let formatted = number.toFixed(2);
-    return parseFloat(formatted);
+// default to two digits
+function xDigits (number, x = 2) {
+    let formatted = Math.round(number * 10**x) / 10**x;
+    return formatted;
 }
 
 function windDirect (windDegree) {
