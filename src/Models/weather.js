@@ -1,5 +1,8 @@
 const axios = require('axios');
-const {City, Weather, ForecastList, Response} = require('./classes');
+const {City, Weather, ForecastList} = require('./weather-class');
+const {SuccessRes} = require('../controllers/response-class');
+const error = require('../controllers/error'); 
+
 const openWeather = axios.create({
     baseURL: 'http://api.openweathermap.org/data/2.5',
 });
@@ -26,11 +29,11 @@ function getWeather (location, weatherType, res) {
         const forecast = new ForecastList(forRes.data.list);
         const current = new Weather (curRes.data);
         const data = (weatherType === 'current')?{city, current}:{city, current, forecast};
-        const response = new Response('success', data);
+        const response = new SuccessRes(data);
         res.json(response);
     })
-    .catch( (error) => {
-        console.error('Error ' + error.message);
+    .catch(err => {
+        error.handler(err, res);
     });
 }
 

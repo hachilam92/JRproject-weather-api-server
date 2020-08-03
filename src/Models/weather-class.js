@@ -1,4 +1,4 @@
-const units = require('../services/units');
+const units = require('../services/unit');
 
 class City {
     constructor (cityData) {
@@ -38,17 +38,8 @@ class ForecastList {
     }
 }
 
-class Response {
-    constructor (status, data, message = null) {
-        this.status = status;
-        this.data = data;
-        this.message = message;
-    }
-}
-
 module.exports = {
     City,
     Weather,
     ForecastList,
-    Response
 }

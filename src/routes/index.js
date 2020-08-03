@@ -1,6 +1,6 @@
 const express = require('express');
 const weatherRoute = require('./weather');
-const {welcome} = require('../controllers/message');
+const welcome = require('../controllers/welcome');
 
 const router = express.Router();
 
