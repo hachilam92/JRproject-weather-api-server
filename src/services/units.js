@@ -18,8 +18,8 @@ function twoDigits (number) {
 function windDirect (windDegree) {
     const directionList = ["N", "NNE","NE","ENE","E","ESE","SE","SSE","S","SSW","SW","WSW","W","WNW","NW","NNW","N"];
     const directionGap = 22.5;
-    const offset = directionGap/2;   //11.25
-    const indexMapping = parseInt((windDegree + offset) / 22.5) + 1;
+    const offset = directionGap/2;   //11.25 degree
+    const indexMapping = parseInt((windDegree + offset) / directionGap) + 1;
     let direction = directionList[indexMapping];
     return direction; 
 }
