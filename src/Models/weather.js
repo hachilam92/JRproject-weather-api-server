@@ -3,34 +3,22 @@ const {City, Weather, ForecastList, Response} = require('./classes');
 const openWeather = axios.create({
     baseURL: 'http://api.openweathermap.org/data/2.5',
 });
+
 const appid =`${process.env.appid}`;      // Fill in API key
 
-let currentWeather;
-let forecastWeather;
-
-
-function getCurrent (location) {
-    currentWeather = openWeather.get('/weather', {
+function requestWeather (location, weatherType = 'current') {
+    const route = (weatherType === 'forecast')? '/forecast':'/weather';
+    const response = openWeather.get(route, {
         params: { 
             q: location,
             appid: appid
         }
     });
-    return currentWeather;
-}
-
-function getForecast (location) {
-    forecastWeather = openWeather.get('/forecast', {
-        params: { 
-            q: location,
-            appid: appid
-        }
-    });
-    return forecastWeather;
+    return response;
 }
 
 function getWeather (location, weatherType, res) {
-    Promise.all([getCurrent(location), getForecast(location)])
+    Promise.all([requestWeather(location), requestWeather(location, 'forecast')])
     .then((responseArray) =>{
         const curRes = responseArray[0];
         const forRes = responseArray[1];
