@@ -30,11 +30,7 @@ class ForecastWeather extends Weather {
 
 class ForecastList {
     constructor (dataList) {
-        this.list = [];
-        dataList.forEach((item) => {
-            let forecastItem = new ForecastWeather(item);
-            this.list.push(forecastItem);
-        });
+        this.list = dataList.map(item => new ForecastWeather(item));
     }
 }
 

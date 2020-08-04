@@ -30,13 +30,16 @@ function getWeather (location, weatherType, res) {
         const current = new Weather (curRes.data);
         const data = (weatherType === 'current')?{city, current}:{city, current, forecast};
         const response = new SuccessRes(data);
-        res.json(response);
+        return res.json(response);
     })
     .catch(err => {
         error.handler(err, res);
     });
 }
 
+
 module.exports = {
     getWeather
-}
+};
+
+

@@ -6,7 +6,7 @@ function handler (error, res) {
     const errorMessage = errorInfo.message;
     const response = new ErrorRes(errorCode, errorMessage);
     console.log(`Error ${error.message}`);
-    res.status(errorCode).json(response);
+    return res.status(errorCode).json(response);
 }
 
 const invalid = new ErrorRes('400', 'Invalid country name or country code');

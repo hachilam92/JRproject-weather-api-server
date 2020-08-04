@@ -8,4 +8,7 @@ function getWeather (req, res, next) {
 
 module.exports = {
     getWeather
-}
+};
+
+
+
