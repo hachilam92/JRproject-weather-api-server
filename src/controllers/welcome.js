@@ -1,4 +1,4 @@
-const {SuccessRes} = require('./response-class');
+const {SuccessRes} = require('../services/response-class');
 
 function welcome (req, res, next) {
     const welcomeMessage = 'Welcome to the weather api! Visit /api-docs for help';

@@ -1,5 +1,5 @@
 const { getCode, getName } = require('country-list');
-const {invalid} = require('../controllers/error');
+const {invalid} = require('../services/error');
 
 function ccValidate(req, res, next) {
     const {cc} = req.query;

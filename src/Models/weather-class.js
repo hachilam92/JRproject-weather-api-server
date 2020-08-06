@@ -28,14 +28,9 @@ class ForecastWeather extends Weather {
     }
 }
 
-class ForecastList {
-    constructor (dataList) {
-        this.list = dataList.map(item => new ForecastWeather(item));
-    }
-}
 
 module.exports = {
     City,
     Weather,
-    ForecastList,
+    ForecastWeather,
 }
